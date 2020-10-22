@@ -1,0 +1,581 @@
+{
+  "ScreenResolutionWidth": 3440,
+  "ScreenResolutionHeight": 1378,
+  "CasesLists": [
+    {
+      "CasesQueue": "Default",
+      "Cases": {
+        "00005814": {
+          "Top": 442,
+          "Left": 956,
+          "Marked": false
+        },
+        "00019494": {
+          "Top": 534,
+          "Left": 1383,
+          "Marked": false
+        },
+        "00020516": {
+          "Top": 490,
+          "Left": 886,
+          "Marked": false
+        },
+        "00020444": {
+          "Top": 981,
+          "Left": 1567,
+          "Marked": false
+        },
+        "00019613": {
+          "Top": 962,
+          "Left": 1486,
+          "Marked": false
+        },
+        "00020509": {
+          "Top": 720,
+          "Left": 1715,
+          "Marked": false
+        },
+        "00020513": {
+          "Top": 821,
+          "Left": 1264,
+          "Marked": false
+        },
+        "00019986": {
+          "Top": 911,
+          "Left": 1232,
+          "Marked": false
+        },
+        "00019111": {
+          "Top": 931,
+          "Left": 1384,
+          "Marked": false
+        },
+        "00020893": {
+          "Top": 818,
+          "Left": 1089,
+          "Marked": false
+        },
+        "00020920": {
+          "Top": 740,
+          "Left": 1496,
+          "Marked": false
+        },
+        "00020799": {
+          "Top": 873,
+          "Left": 1405,
+          "Marked": false
+        },
+        "00020868": {
+          "Top": 673,
+          "Left": 1225,
+          "Marked": false
+        },
+        "00020648": {
+          "Top": 440,
+          "Left": 1292,
+          "Marked": false
+        },
+        "00020912": {
+          "Top": 500,
+          "Left": 1284,
+          "Marked": false
+        },
+        "00020746": {
+          "Top": 647,
+          "Left": 1325,
+          "Marked": false
+        },
+        "00020884": {
+          "Top": 612,
+          "Left": 1389,
+          "Marked": false
+        },
+        "00020902": {
+          "Top": 741,
+          "Left": 1239,
+          "Marked": false
+        },
+        "00015987": {
+          "Top": 874,
+          "Left": 1653,
+          "Marked": false
+        },
+        "00009761": {
+          "Top": 732,
+          "Left": 1643,
+          "Marked": false
+        },
+        "00014807": {
+          "Top": 438,
+          "Left": 1477,
+          "Marked": false
+        },
+        "00020409": {
+          "Top": 354,
+          "Left": 1372,
+          "Marked": false
+        },
+        "00020410": {
+          "Top": 415,
+          "Left": 1571,
+          "Marked": false
+        },
+        "00017678": {
+          "Top": 475,
+          "Left": 1619,
+          "Marked": false
+        },
+        "00014716": {
+          "Top": 601,
+          "Left": 1574,
+          "Marked": false
+        },
+        "00017763": {
+          "Top": 688,
+          "Left": 1633,
+          "Marked": false
+        },
+        "00019022": {
+          "Top": 628,
+          "Left": 1705,
+          "Marked": false
+        },
+        "00018799": {
+          "Top": 754,
+          "Left": 1318,
+          "Marked": false
+        },
+        "00020382": {
+          "Top": 832,
+          "Left": 1432,
+          "Marked": false
+        },
+        "00019427": {
+          "Top": 575,
+          "Left": 1710,
+          "Marked": false
+        },
+        "00019842": {
+          "Top": 790,
+          "Left": 1700,
+          "Marked": false
+        },
+        "00016044": {
+          "Top": 648,
+          "Left": 1629,
+          "Marked": false
+        },
+        "00012059": {
+          "Top": 783,
+          "Left": 1605,
+          "Marked": false
+        },
+        "00017190": {
+          "Top": 673,
+          "Left": 1497,
+          "Marked": false
+        },
+        "00015206": {
+          "Top": 567,
+          "Left": 1609,
+          "Marked": false
+        },
+        "00016231": {
+          "Top": 744,
+          "Left": 1566,
+          "Marked": false
+        },
+        "00019460": {
+          "Top": 608,
+          "Left": 1488,
+          "Marked": false
+        },
+        "00019867": {
+          "Top": 809,
+          "Left": 1421,
+          "Marked": false
+        },
+        "00018842": {
+          "Top": 575,
+          "Left": 1352,
+          "Marked": false
+        },
+        "00019217": {
+          "Top": 501,
+          "Left": 1502,
+          "Marked": false
+        },
+        "00019218": {
+          "Top": 727,
+          "Left": 1397,
+          "Marked": false
+        },
+        "00018711": {
+          "Top": 462,
+          "Left": 1393,
+          "Marked": false
+        },
+        "00016544": {
+          "Top": 855,
+          "Left": 1607,
+          "Marked": false
+        },
+        "00020701": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00019780": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00008135": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00010193": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00009744": {
+          "Top": 583,
+          "Left": 1529,
+          "Marked": false
+        },
+        "00013299": {
+          "Top": 808,
+          "Left": 1466,
+          "Marked": false
+        },
+        "00020269": {
+          "Top": 465,
+          "Left": 1421,
+          "Marked": false
+        },
+        "00006342": {
+          "Top": 754,
+          "Left": 1183,
+          "Marked": false
+        },
+        "00011965": {
+          "Top": 585,
+          "Left": 1289,
+          "Marked": false
+        },
+        "00020443": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00020226": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00020094": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00019417": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00019839": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00020145": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00002969": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00001659": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00020592": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00003521": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00006403": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00004754": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00005835": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00009550": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00009575": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00007337": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00012725": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00012635": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00016481": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00019601": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00019088": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00018220": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00018866": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00019864": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00019970": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00019053": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00018283": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00019368": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00019159": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00018865": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00001555": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00020779": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00020674": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00020873": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00020677": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00020700": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00020583": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00003517": {
+          "Top": 352,
+          "Left": 939,
+          "Marked": false
+        },
+        "00010200": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00012161": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00012000": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00012323": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00014062": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00012748": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00013872": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00014951": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00014742": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00018601": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00019592": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00019230": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00018702": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00019655": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00019696": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00019361": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00018193": {
+          "Top": 356,
+          "Left": 582,
+          "Marked": false
+        },
+        "00016308": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00015100": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00017475": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00017165": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00018152": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00017950": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        },
+        "00018187": {
+          "Top": 689,
+          "Left": 1720,
+          "Marked": false
+        }
+      }
+    }
+  ]
+}

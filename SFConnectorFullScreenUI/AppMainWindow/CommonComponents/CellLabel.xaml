@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="SFConnectorFullScreenUI.CellLabel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SFConnectorFullScreenUI"
+             x:Name="cellLabel"
+             mc:Ignorable="d" 
+             Canvas.Left="{Binding Left}" 
+             Canvas.Top="{Binding Top}"
+             Height="{Binding Height, FallbackValue=30, Mode=TwoWay}" 
+             Width="{Binding Width, FallbackValue=80, Mode=TwoWay}"
+             >
+    <Grid>
+        <Border BorderThickness="2" 
+                Background="{StaticResource BackgroundBrush}"
+                >
+            
+            <Border.BorderBrush>
+                <DrawingBrush Viewport="0,0,15,12" ViewportUnits="Absolute" TileMode="Tile">
+                    <DrawingBrush.Drawing>
+                        <DrawingGroup>
+                            <GeometryDrawing Brush="{StaticResource AccentBrush}">
+                                <GeometryDrawing.Geometry>
+                                    <GeometryGroup>
+                                        <RectangleGeometry Rect="0,0,50,50" />
+                                        <RectangleGeometry Rect="50,50,50,50" />
+                                    </GeometryGroup>
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingGroup>
+                    </DrawingBrush.Drawing>
+                </DrawingBrush>
+            </Border.BorderBrush>
+        </Border>
+        <TextBox x:Name="note" Text="{Binding Note, FallbackValue='This is the note'}" 
+                   Foreground="{StaticResource ForegroundBrush}" 
+                   TextWrapping="Wrap"
+                   FontSize="12"
+                   Padding="2"
+                   TextAlignment="Center"
+                   TextBlock.LineStackingStrategy="BlockLineHeight" 
+                   TextBlock.LineHeight="12"
+                   Style="{StaticResource ComboBoxEditableTextBox}" 
+                   Margin="2"
+                   CaretBrush="{StaticResource ForegroundBrush}" 
+                   />
+
+        
+        <Border IsHitTestVisible="True" BorderBrush="Transparent" BorderThickness="6"  MouseDown="Border_MouseDown" MouseMove="Border_MouseMove" MouseUp="Border_MouseUp" 
+                Height="{Binding Height, FallbackValue=30, Mode=TwoWay}" 
+                Width="{Binding Width, FallbackValue=80, Mode=TwoWay}"
+                Canvas.Left="{Binding Left}"
+                Canvas.Top="{Binding Top}"/>
+
+        
+        <Button x:Name="closeBut" Width="5" Height="5" 
+                        HorizontalAlignment="Right" VerticalAlignment="Top" 
+                        Style="{StaticResource WindowButtonStyleClose}" 
+                        Command="{Binding CloseCellLabel}"
+                        >
+        </Button>
+    </Grid>
+</UserControl>

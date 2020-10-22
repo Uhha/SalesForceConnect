@@ -1,0 +1,444 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\..\..\packages\PropertyChanged.Fody.3.2.10\build\PropertyChanged.Fody.props" Condition="Exists('..\..\..\..\..\packages\PropertyChanged.Fody.3.2.10\build\PropertyChanged.Fody.props')" />
+  <Import Project="\..\..\packages\PropertyChanged.Fody.2.5.12\build\PropertyChanged.Fody.props" Condition="Exists('\..\..\packages\PropertyChanged.Fody.2.5.12\build\PropertyChanged.Fody.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{866B98A2-CF4F-499E-8C82-F972E53281F9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SFConnectorFullScreenUI</RootNamespace>
+    <AssemblyName>SFConnectorFullScreenUI</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon_ZGY_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Windows.Design.Interaction, Version=4.3.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=x86" />
+    <Reference Include="NetCoreForce.Client, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\packages\NetCoreForce.Client.2.6.0\lib\netstandard2.0\NetCoreForce.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>\..\..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="PresentationFramework.Aero2" />
+    <Reference Include="PropertyChanged, Version=3.2.10.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\packages\PropertyChanged.Fody.3.2.10\lib\net40\PropertyChanged.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Interactive.Async, Version=3.2.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\packages\System.Interactive.Async.3.2.0\lib\net46\System.Interactive.Async.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Security.AccessControl, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>\..\..\packages\System.Security.AccessControl.4.5.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>\..\..\packages\System.Security.Permissions.4.5.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>\..\..\packages\System.Security.Principal.Windows.4.5.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>\..\..\packages\System.Text.Encodings.Web.4.4.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AppMainWindow\CommonComponents\Attachments\AttachmentButton.xaml.cs">
+      <DependentUpon>AttachmentButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppMainWindow\CommonComponents\Attachments\AttachmentButtonVM.cs" />
+    <Compile Include="AppMainWindow\CommonComponents\Attachments\AttachmentIcon.xaml.cs">
+      <DependentUpon>AttachmentIcon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppMainWindow\CommonComponents\Attachments\AttachmentTypeConverter.cs" />
+    <Compile Include="AppMainWindow\CommonComponents\BlinkHighlight.xaml.cs">
+      <DependentUpon>BlinkHighlight.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppMainWindow\CommonComponents\CasesControls\CaseControlLong.xaml.cs">
+      <DependentUpon>CaseControlLong.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppMainWindow\CommonComponents\CellLabelVM.cs" />
+    <Compile Include="AppMainWindow\CommonComponents\CellLabel.xaml.cs">
+      <DependentUpon>CellLabel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppMainWindow\CommonComponents\ControlsHelpers\SelectedCaseConverter.cs" />
+    <Compile Include="AppMainWindow\CommonComponents\ControlsHelpers\RectConverter.cs" />
+    <Compile Include="AppMainWindow\CommonComponents\ControlsHelpers\PriorityColorConverter.cs" />
+    <Compile Include="AppMainWindow\CommonComponents\ControlsHelpers\StatusColorConverter.cs" />
+    <Compile Include="AppMainWindow\CommonComponents\ControlsHelpers\StringToXamlConverter.cs" />
+    <Compile Include="AppMainWindow\Selector.xaml.cs">
+      <DependentUpon>Selector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppMainWindow\WorkArea\SideList\SidelistYesNoDialog.xaml.cs">
+      <DependentUpon>SidelistYesNoDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppMainWindow\WorkArea\SideList\SideListCaseItem.xaml.cs">
+      <DependentUpon>SideListCaseItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppMainWindow\CommonComponents\ControlsHelpers\ArithmeticConverter.cs" />
+    <Compile Include="AppMainWindow\CommonComponents\BusySpinnerVM.cs" />
+    <Compile Include="AppMainWindow\CommonComponents\CasesControls\CaseControlDetailsVM.cs" />
+    <Compile Include="AppMainWindow\CommonComponents\CasesControls\CaseControlVM.cs" />
+    <Compile Include="AppMainWindow\CommonComponents\ControlsHelpers\TextBoxHelper.cs" />
+    <Compile Include="AppMainWindow\CommonComponents\OperationCompletedMarkVM.cs" />
+    <Compile Include="AppMainWindow\CommonComponents\QueueComboBox.xaml.cs">
+      <DependentUpon>QueueComboBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppMainWindow\CommonComponents\QueueComboBoxVM.cs" />
+    <Compile Include="AppMainWindow\CommonComponents\Spinner.xaml.cs">
+      <DependentUpon>Spinner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppMainWindow\WorkArea\SideList\SideList.xaml.cs">
+      <DependentUpon>SideList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppMainWindow\WorkArea\SideList\SideListVM.cs" />
+    <Compile Include="AppMainWindow\WorkArea\Tabs\PlainView\CasesCanvas.xaml.cs">
+      <DependentUpon>CasesCanvas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppMainWindow\WorkArea\Tabs\PlainView\SortBar\GroupButton.xaml.cs">
+      <DependentUpon>GroupButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppMainWindow\WorkArea\Tabs\PlainView\SortBar\SortBarPannelVM.cs" />
+    <Compile Include="AppMainWindow\WorkArea\Tabs\PlainView\CasesCanvasVM.cs" />
+    <Compile Include="AppMainWindow\WorkArea\WorkAreaVM.cs" />
+    <Compile Include="Base\AsyncCommand.cs" />
+    <Compile Include="Base\IAsyncCommand.cs" />
+    <Compile Include="Base\IErrorHandler.cs" />
+    <Compile Include="Base\RelayCommand.cs" />
+    <Compile Include="Base\BaseViewModel.cs" />
+    <Compile Include="AppMainWindow\WorkArea\Tabs\ListView\FieldAreaListVM.cs" />
+    <Compile Include="AppMainWindow\WorkArea\Tabs\ListView\FieldAreaList.xaml.cs">
+      <DependentUpon>FieldAreaList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppMainWindow\WorkArea\Tabs\ListView\FieldAreaListBarTFS.xaml.cs">
+      <DependentUpon>FieldAreaListBarTFS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppMainWindow\WorkArea\Tabs\ListView\FieldAreaListBarSF.xaml.cs">
+      <DependentUpon>FieldAreaListBarSF.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppMainWindow\WorkArea\Tabs\ListView\FieldAreaListBarVM.cs" />
+    <Compile Include="AppMainWindow\WorkArea\Tabs\ListView\GridViewSort.cs" />
+    <Compile Include="Base\RelayCommandErrorHandler.cs" />
+    <Compile Include="Base\TabContent.cs" />
+    <Compile Include="Base\TaskExtentions.cs" />
+    <Compile Include="ConfigurableParameters.cs" />
+    <Compile Include="Data\ListTabsSettings\ColumnsSettingsState.cs" />
+    <Compile Include="Data\ListTabsSettings\ColumnSettingsOperations.cs" />
+    <Compile Include="Data\ListTabsSettings\ColumnPreset.cs" />
+    <Compile Include="Data\PositionsState\LabelInfo.cs" />
+    <Compile Include="Data\PositionsState\CaseInfo.cs" />
+    <Compile Include="Data\PositionsState\CasesList.cs" />
+    <Compile Include="Data\PositionsState\CasesState.cs" />
+    <Compile Include="Data\PositionsState\CasesStatesOperations.cs" />
+    <Compile Include="AppMainWindow\CommonComponents\BusySpinner.xaml.cs">
+      <DependentUpon>BusySpinner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppMainWindow\Menu\FileMenu.xaml.cs">
+      <DependentUpon>FileMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppMainWindow\WorkArea\Tabs\PlainView\SortBar\SortButton.xaml.cs">
+      <DependentUpon>SortButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\ConnectionChecker.cs" />
+    <Compile Include="AppMainWindow\Logger\LogBar.xaml.cs">
+      <DependentUpon>LogBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppMainWindow\Logger\LoggerController.cs" />
+    <Compile Include="AppMainWindow\WorkArea\Tabs\PlainView\SortBar\SortBarPannel.xaml.cs">
+      <DependentUpon>SortBarPannel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PositionsState\CasesTab.cs" />
+    <Compile Include="Loading.xaml.cs">
+      <DependentUpon>Loading.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Shaders\EffectLibrary.cs" />
+    <Compile Include="Shaders\MultiInputEffect.cs" />
+    <Compile Include="TestTools\ArrayTreckerWindow.xaml.cs">
+      <DependentUpon>ArrayTreckerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppMainWindow\WorkArea\WorkArea.xaml.cs">
+      <DependentUpon>WorkArea.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AppMainWindow\CommonComponents\Attachments\AttachmentButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppMainWindow\CommonComponents\Attachments\AttachmentIcon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppMainWindow\CommonComponents\BlinkHighlight.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppMainWindow\CommonComponents\BusySpinner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppMainWindow\CommonComponents\CasesControls\CaseControlLong.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppMainWindow\CommonComponents\CellLabel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppMainWindow\Selector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppMainWindow\WorkArea\SideList\SidelistYesNoDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppMainWindow\WorkArea\SideList\SideListCaseItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AppMainWindow\CommonComponents\QueueComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppMainWindow\CommonComponents\Spinner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppMainWindow\Menu\FileMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppMainWindow\WorkArea\SideList\SideList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppMainWindow\WorkArea\Tabs\PlainView\CasesCanvas.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AppMainWindow\WorkArea\Tabs\PlainView\SortBar\GroupButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppMainWindow\WorkArea\Tabs\PlainView\SortBar\SortButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppMainWindow\CommonComponents\CasesControls\CaseControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppMainWindow\CommonComponents\CasesControls\CaseControlDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppMainWindow\Logger\LogBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppMainWindow\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AppMainWindow\CommonComponents\CasesControls\CaseControl.xaml.cs">
+      <DependentUpon>CaseControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppMainWindow\CommonComponents\CasesControls\CaseControlDetails.xaml.cs">
+      <DependentUpon>CaseControlDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppMainWindow\Icon.xaml.cs">
+      <DependentUpon>Icon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppMainWindow\CommonComponents\ControlsHelpers\ControlsHelper.cs" />
+    <Compile Include="Base\Index.cs" />
+    <Compile Include="AppMainWindow\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="AppMainWindow\CommonComponents\OperationCompletedMark.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppMainWindow\Icon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppMainWindow\WorkArea\Tabs\ListView\FieldAreaList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppMainWindow\WorkArea\Tabs\ListView\FieldAreaListBarTFS.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AppMainWindow\WorkArea\Tabs\ListView\FieldAreaListBarSF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Loading.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrimeResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppMainWindow\WorkArea\Tabs\PlainView\SortBar\SortBarPannel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestTools\ArrayTreckerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppMainWindow\WorkArea\WorkArea.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppMainWindow\CommonComponents\OperationCompletedMark.xaml.cs">
+      <DependentUpon>OperationCompletedMark.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Resource Include="Shaders\MultiInputEffect.ps">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GlobalConfiguration\GlobalConfiguration.csproj">
+      <Project>{9e03473e-e022-4917-99fe-ee5a7ac8f90a}</Project>
+      <Name>GlobalConfiguration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImplementationModel\ImplementationModel.csproj">
+      <Project>{d652c3fa-585d-439d-8ab8-b2cbf1eecfd9}</Project>
+      <Name>ImplementationModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SFLink\SFLink.csproj">
+      <Project>{EC244751-0C8A-42B0-9224-F4A0A76E0F43}</Project>
+      <Name>SFLink</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon_ZGY_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\MainWindowUI\images\down.png" />
+    <Resource Include="Content\MainWindowUI\images\up.png" />
+    <None Include="Content\MainWindowUI\SplashScreen\splash_screen.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\MainWindowUI\images\Tree.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Shaders\MultiInputEffect.fx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\MainWindowUI\images\Toucan.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\..\..\packages\Fody.6.3.0\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\..\..\packages\Fody.6.3.0\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\..\..\..\..\packages\PropertyChanged.Fody.3.2.10\build\PropertyChanged.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\..\..\packages\PropertyChanged.Fody.3.2.10\build\PropertyChanged.Fody.props'))" />
+  </Target>
+  <Import Project="\..\..\packages\Fody.3.2.7\build\Fody.targets" Condition="Exists('\..\..\packages\Fody.3.2.7\build\Fody.targets')" />
+  <Import Project="..\..\..\..\..\packages\Fody.6.3.0\build\Fody.targets" Condition="Exists('..\..\..\..\..\packages\Fody.6.3.0\build\Fody.targets')" />
+</Project>

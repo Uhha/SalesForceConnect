@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="SFConnectorUI.Floater"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SFConnectorUI"
+             mc:Ignorable="d" Height="79.477" Width="353.12"
+             MouseMove="Floater_MouseMove"
+             MouseDown="Floater_MouseDown"
+             MouseUp="Floater_MouseUp"
+             >
+
+
+    <Border CornerRadius="8" Background="#FF0E423D" BorderBrush="Black" BorderThickness="1" >
+
+        <Grid>
+            <Border CornerRadius="8, 8, 0, 0" Margin="-1,-1,-1,24" >
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#51FFFFFF" Offset="0"/>
+                        <GradientStop Offset="1" Color="#05FFFFFF"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+
+
+            <ComboBox x:Name="casesLists" HorizontalAlignment="Left" 
+                      Margin="33,4,0,0" VerticalAlignment="Top" 
+                      Width="136" Height="19"
+                      SelectionChanged="CasesLists_SelectionChanged" Padding="4,0"
+                      >
+
+            </ComboBox>
+            <TextBox HorizontalAlignment="Left" Height="19" Margin="79,28,0,0" TextWrapping="Wrap" Text="{Binding CaseNumberToSearch, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="90" 
+                     >
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Enter" Command="{Binding EnterKeyCommand}"/>
+                </TextBox.InputBindings>
+            </TextBox>
+            <Label Content="List:" HorizontalAlignment="Left" Margin="3,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.133,0.115" Foreground="White"/>
+            <Label Content="Search Case:" HorizontalAlignment="Left" Margin="3,23,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.133,0.115" Foreground="White"/>
+            <Label Content="Sort By:" HorizontalAlignment="Left" Margin="182,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.133,0.115" Foreground="White"/>
+
+            <ComboBox x:Name="sortOrderList" HorizontalAlignment="Left" 
+                      Margin="232,4,0,0" VerticalAlignment="Top" 
+                      Width="112" Height="19"
+                      SelectionChanged="SortOrder_SelectionChanged" Padding="4,0"
+                      >
+
+            </ComboBox>
+            <Button Content="Show Subjects" HorizontalAlignment="Left" Margin="258,26,0,0" VerticalAlignment="Top" Width="86" Click="Button_Click"/>
+            <ComboBox x:Name="casesListsTFS" HorizontalAlignment="Left" 
+                Margin="33,53,0,-2" VerticalAlignment="Top" 
+                Width="136" Height="19"
+                SelectionChanged="CasesListsTFS_SelectionChanged" Padding="4,0"
+                      />
+            <Label Content="TFS:" HorizontalAlignment="Left" Margin="3,49,0,-5" VerticalAlignment="Top" RenderTransformOrigin="0.133,0.115" Foreground="White"/>
+
+        </Grid>
+    </Border>
+</UserControl>

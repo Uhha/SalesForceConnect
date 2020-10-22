@@ -1,0 +1,308 @@
+﻿<UserControl x:Class="SFConnectorFullScreenUI.CasesCanvas"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SFConnectorFullScreenUI"
+             xmlns:impl="clr-namespace:ImplementationModel;assembly=ImplementationModel"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             mc:Ignorable="d" 
+             x:Name="casesCanvas"
+              
+             
+             >
+    <!--<i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseDoubleClick" >
+            <i:InvokeCommandAction Command="{Binding AddCellLabel}" CommandParameter="{Binding ElementName=casesCanvas}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>-->
+
+    <!--SCROLL BARS-->
+    <ScrollViewer x:Name="scrollViewer" HorizontalScrollBarVisibility="Auto" 
+                  VerticalScrollBarVisibility="Auto" 
+                  Template="{StaticResource ScrollViewerControlTemplateFlat}"
+                  >
+        <Grid x:Name="scrollViewerContentGrid" Background="{StaticResource WorkAreaBrush}"
+            MouseLeftButtonDown="Grid_MouseLeftButtonDown" 
+          PreviewMouseMove="Grid_PreviewMouseMove" 
+          PreviewMouseLeftButtonUp="Grid_PreviewMouseLeftButtonUp"
+              MouseLeftButtonUp="Grid_MouseLeftButtonUp"
+          >
+            
+            <!--CELL LABELS-->
+            <ItemsControl ItemsSource="{Binding CellLabels}" >
+
+                <ItemsControl.Style>
+                    <Style TargetType="ItemsControl">
+                        <Setter Property="ItemsPanel" >
+                            <Setter.Value>
+                                <ItemsPanelTemplate>
+                                    <Canvas VerticalAlignment="Top" 
+                                            HorizontalAlignment="Left" 
+                                            Width="{Binding CanvasWidth, FallbackValue=0 }" 
+                                            Height="{Binding CanvasHeight}" />
+                                </ItemsPanelTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding DataContext.ActiveView, 
+                                                    RelativeSource={RelativeSource FindAncestor, 
+                                                    AncestorType={x:Type local:CasesCanvas}}}" 
+                                         Value="{x:Static impl:ActiveView.Normal}" >
+                                <Setter Property="ItemsPanel">
+                                    <Setter.Value>
+                                        <ItemsPanelTemplate>
+                                            <Canvas x:Name="cellCan" VerticalAlignment="Top" 
+                                                    HorizontalAlignment="Left" 
+                                                    Width="{Binding CanvasWidth, FallbackValue=0 }" 
+                                                    Height="{Binding CanvasHeight}" />
+                                        </ItemsPanelTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+
+                        </Style.Triggers>
+                    </Style>
+                </ItemsControl.Style>
+
+
+                <!--CONTAINER STYLE WITH TRIGGER FOR CASES POSITIONS-->
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="Canvas.Left" Value="{Binding Path=Left}" />
+                        <Setter Property="Canvas.Top" Value="{Binding Path=Top}" />
+                        <Setter Property="Canvas.ZIndex" Value="{Binding Path=ZIndex}" />
+
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding DataContext.ActiveView, 
+                                                    RelativeSource={RelativeSource FindAncestor, 
+                                                    AncestorType={x:Type local:CasesCanvas}}}" 
+                                         Value="{x:Static impl:ActiveView.Normal}" >
+                            </DataTrigger>
+
+                        </Style.Triggers>
+                    </Style>
+
+                </ItemsControl.ItemContainerStyle>
+
+                <!--CASES DYNAMIC USER CONTROL SETUP-->
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <ContentControl Content="{Binding}">
+                            <ContentControl.Style>
+                                <Style TargetType="ContentControl">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding DataContext.ActiveView, 
+                                                                RelativeSource={RelativeSource FindAncestor, 
+                                                                AncestorType={x:Type local:CasesCanvas}}}" 
+                                                     Value="{x:Static impl:ActiveView.Normal}">
+                                            <Setter Property="ContentTemplate">
+                                                <Setter.Value>
+                                                    <DataTemplate>
+                                                        <local:CellLabel>
+                                                            <local:CellLabel.DataContext >
+                                                                <Binding />
+                                                            </local:CellLabel.DataContext>
+                                                        </local:CellLabel>
+                                                    </DataTemplate>
+                                                </Setter.Value>
+
+                                            </Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ContentControl.Style>
+                        </ContentControl>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+
+
+
+            <!--CELLS-->
+            <Border IsHitTestVisible="False">
+                <Border.Background>
+                    <VisualBrush 
+                        TileMode="Tile" 
+                        ViewportUnits="Absolute" 
+                        ViewboxUnits="Absolute">
+
+                        <VisualBrush.Viewport>
+                            <MultiBinding>
+                                <MultiBinding.Converter>
+                                    <local:RectConverter/>
+                                </MultiBinding.Converter>
+                                <Binding Path="CaseWidth"/>
+                                <Binding Path="CaseHeight"/>
+                            </MultiBinding>
+                        </VisualBrush.Viewport>
+                        <VisualBrush.Viewbox>
+                            <MultiBinding>
+                                <MultiBinding.Converter>
+                                    <local:RectConverter/>
+                                </MultiBinding.Converter>
+                                <Binding Path="CaseWidth"/>
+                                <Binding Path="CaseHeight"/>
+                            </MultiBinding>
+                        </VisualBrush.Viewbox>
+
+                        <VisualBrush.Visual>
+                            <Border Background="Transparent" 
+                                    BorderBrush="White" BorderThickness=".1" 
+                                    Width="{Binding CaseWidth}" 
+                                    Height="{Binding CaseHeight}">
+
+                            </Border>
+
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </Border.Background>
+            </Border>
+
+            <!--CASES-->
+            <ItemsControl ItemsSource="{Binding CaseControls}" >
+
+                <ItemsControl.Style>
+                    <Style TargetType="ItemsControl">
+                        <Setter Property="ItemsPanel" >
+                            <Setter.Value>
+                                <ItemsPanelTemplate>
+                                    <Canvas VerticalAlignment="Top" 
+                                            HorizontalAlignment="Left" 
+                                            Width="{Binding CanvasWidth, FallbackValue=0 }" 
+                                            Height="{Binding CanvasHeight}" />
+                                </ItemsPanelTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding DataContext.ActiveView, 
+                                                    RelativeSource={RelativeSource FindAncestor, 
+                                                    AncestorType={x:Type local:CasesCanvas}}}" 
+                                         Value="{x:Static impl:ActiveView.Normal}" >
+                                <Setter Property="ItemsPanel">
+                                    <Setter.Value>
+                                        <ItemsPanelTemplate>
+                                            <Canvas VerticalAlignment="Top" 
+                                                    HorizontalAlignment="Left" 
+                                                    Width="{Binding CanvasWidth, FallbackValue=0 }" 
+                                                    Height="{Binding CanvasHeight}" />
+                                        </ItemsPanelTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding DataContext.ActiveView, 
+                                                    RelativeSource={RelativeSource FindAncestor, 
+                                                    AncestorType={x:Type local:CasesCanvas}}}" 
+                                         Value="{x:Static impl:ActiveView.Long}" >
+                                <Setter Property="ItemsPanel">
+                                    <Setter.Value>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Vertical" 
+                                                        VerticalAlignment="Top" 
+                                                        HorizontalAlignment="Left"  
+                                                        />
+                                        </ItemsPanelTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ItemsControl.Style>
+                
+                <!--CASES PANEL-->
+                <!--<ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <DataTrigger Binding="{Binding}">
+                            <Setter Property="Content" >
+                                <Setter.Value>
+                                    <ItemsPanelTemplate>
+                                        <Canvas VerticalAlignment="Top" HorizontalAlignment="Left" Width="{Binding CanvasWidth, FallbackValue=0 }" Height="{Binding CanvasHeight}" />
+                                    </ItemsPanelTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>   
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>-->
+                
+                <!--CONTAINER STYLE WITH TRIGGER FOR CASES POSITIONS-->
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="Canvas.Left" Value="{Binding Path=Left}" />
+                        <Setter Property="Canvas.Top" Value="{Binding Path=Top}" />
+                        <Setter Property="Canvas.ZIndex" Value="{Binding Path=ZIndex}" />
+
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding DataContext.ActiveView, 
+                                                    RelativeSource={RelativeSource FindAncestor, 
+                                                    AncestorType={x:Type local:CasesCanvas}}}" 
+                                         Value="{x:Static impl:ActiveView.Normal}" >
+                                <Setter Property="Canvas.Left" Value="{Binding Path=Left}" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding DataContext.ActiveView, 
+                                                    RelativeSource={RelativeSource FindAncestor, 
+                                                    AncestorType={x:Type local:CasesCanvas}}}" 
+                                         Value="{x:Static impl:ActiveView.Long}" >
+                                <Setter Property="Canvas.Left"  Value="0"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                    
+                </ItemsControl.ItemContainerStyle>
+                
+                <!--CASES DYNAMIC USER CONTROL SETUP-->
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <ContentControl Content="{Binding}">
+                            <ContentControl.Style>
+                                <Style TargetType="ContentControl">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding DataContext.ActiveView, 
+                                                                RelativeSource={RelativeSource FindAncestor, 
+                                                                AncestorType={x:Type local:CasesCanvas}}}" 
+                                                     Value="{x:Static impl:ActiveView.Normal}">
+                                            <Setter Property="ContentTemplate">
+                                                <Setter.Value>
+                                                    <DataTemplate>
+                                                        <local:CaseControl>
+                                                            <local:CaseControl.DataContext >
+                                                                <Binding />
+                                                            </local:CaseControl.DataContext>
+                                                        </local:CaseControl>
+                                                    </DataTemplate>
+                                                </Setter.Value>
+                                                    
+                                            </Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding DataContext.ActiveView, 
+                                                                RelativeSource={RelativeSource FindAncestor, 
+                                                                AncestorType={x:Type local:CasesCanvas}}}" 
+                                                     Value="{x:Static impl:ActiveView.Long}">
+                                            <Setter Property="ContentTemplate">
+                                                <Setter.Value>
+                                                    <DataTemplate>
+                                                        <local:CaseControlLong>
+                                                            <local:CaseControlLong.DataContext >
+                                                                <Binding />
+                                                            </local:CaseControlLong.DataContext>
+                                                        </local:CaseControlLong>
+                                                    </DataTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ContentControl.Style>
+                        </ContentControl>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <Canvas x:Name="selectorCanvas">
+
+            </Canvas>
+
+
+        </Grid>
+    </ScrollViewer>
+</UserControl>

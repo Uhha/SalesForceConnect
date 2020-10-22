@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="backlogQ.json" />
+    <None Remove="closedQ.json" />
+    <None Remove="critQ.json" />
+    <None Remove="csQ.json" />
+    <None Remove="devQ.json" />
+    <None Remove="finopQ.json" />
+    <None Remove="holdQ.json" />
+    <None Remove="implQ.json" />
+    <None Remove="qaQ.json" />
+    <None Remove="reviewQ.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NetCoreForce.Client" Version="2.6.0" />
+    <PackageReference Include="NetCoreForce.Models" Version="2.6.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GlobalConfiguration\GlobalConfiguration.csproj" />
+    <ProjectReference Include="..\ImplementationModel\ImplementationModel.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="StubbedQueues\" />
+  </ItemGroup>
+</Project>

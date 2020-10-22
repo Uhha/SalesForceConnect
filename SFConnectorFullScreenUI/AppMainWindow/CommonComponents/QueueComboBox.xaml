@@ -1,0 +1,44 @@
+﻿<UserControl x:Name="userControl" x:Class="SFConnectorFullScreenUI.QueueComboBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SFConnectorFullScreenUI"
+             
+             mc:Ignorable="d"
+             Height="21"
+             MinWidth="200"
+          >
+    <!--xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"-->
+    <!--<i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding BuildQueue}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>-->
+
+
+    <Grid RenderTransformOrigin="0.5,0.5" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition Width="21"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <ComboBox Grid.Column="0" x:Name="combobox" VerticalAlignment="Top"  Height="21"
+                  ItemsSource="{Binding QueueItems}"
+                  SelectedItem="{Binding SelectedQueueItem}"
+                  Style="{StaticResource ComboBoxStyleFlat}" />
+
+        <local:Spinner Grid.Column="1" x:Name="spinner" RenderTransformOrigin="0.5,0.5" 
+                       DataContext="{Binding BusySpinnerVM}"
+                           >
+            <local:Spinner.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.8" ScaleY="0.8"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </local:Spinner.RenderTransform>
+
+        </local:Spinner>
+    </Grid>
+</UserControl>

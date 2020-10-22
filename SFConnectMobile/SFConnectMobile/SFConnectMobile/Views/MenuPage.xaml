@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:fontawesome="clr-namespace:FontAwesome"
+             xmlns:selectors="clr-namespace:SFConnectMobile.Views.Selectors"
+             xmlns:converters="clr-namespace:SFConnectMobile.Converters"
+             mc:Ignorable="d"
+             x:Class="SFConnectMobile.Views.MenuPage"
+             BackgroundColor="{StaticResource WorkAreaColor}"
+             Title="Menu">
+    
+    
+    <ContentPage.Resources>
+
+        <converters:QueueNameToGlyphConverter x:Key="queueNameToGlyphConverter" />
+
+        <ResourceDictionary>
+            <DataTemplate  x:Key="QueueMenuItemTemplate">
+                <ViewCell>
+                    <Grid Padding="20, 10, 10, 10" ColumnSpacing="10" VerticalOptions="Center" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image WidthRequest="20" Grid.Column="0">
+                            <Image.Source>
+                                <FontImageSource FontFamily="{StaticResource FontAwesomeSolid}"
+                                                 Glyph="{Binding Title, Converter={StaticResource queueNameToGlyphConverter}}" />
+                            </Image.Source>
+
+                        </Image>
+                        <Label VerticalTextAlignment="Start" VerticalOptions="StartAndExpand" 
+                               Grid.Column="1" 
+                               Text="{Binding Title}" 
+                               FontSize="20" 
+                               TextColor="{StaticResource ForegroundColor}" />
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+
+            <DataTemplate  x:Key="ReviewMenuItemTemplate">
+                <ViewCell>
+                    <Grid Padding="20, 10, 10, 10" ColumnSpacing="10" VerticalOptions="Center" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image WidthRequest="20" Grid.Column="0">
+                            <Image.Source>
+                                <FontImageSource FontFamily="{StaticResource FontAwesomeSolid}"
+                                                 Glyph="{Binding Title, Converter={StaticResource queueNameToGlyphConverter}}" />
+                            </Image.Source>
+
+                        </Image>
+                        <Label VerticalTextAlignment="Start" VerticalOptions="StartAndExpand" 
+                               Grid.Column="1" 
+                               Text="{Binding Title}" 
+                               FontSize="20" 
+                               TextColor="{StaticResource ForegroundColor}" />
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+
+            <DataTemplate  x:Key="SearchMenuItemTemplate">
+                <ViewCell>
+                    <Grid Padding="20, 10, 10, 10" ColumnSpacing="10" VerticalOptions="Center" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image WidthRequest="20" Grid.Column="0">
+                            <Image.Source>
+                                <FontImageSource FontFamily="{StaticResource FontAwesomeSolid}"
+                        Glyph="{x:Static fontawesome:FontAwesomeIcons.Search}" />
+                            </Image.Source>
+
+                        </Image>
+                        <Label VerticalTextAlignment="Start" VerticalOptions="StartAndExpand" 
+                    Grid.Column="1" Text="{Binding Title}" FontSize="20" TextColor="{StaticResource ForegroundColor}" />
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+
+            <DataTemplate  x:Key="ManualMenuItemTemplate">
+                <ViewCell>
+                    <Grid Padding="20, 10, 10, 10" ColumnSpacing="10" VerticalOptions="Center" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image WidthRequest="20" Grid.Column="0">
+                            <Image.Source>
+                                <FontImageSource FontFamily="{StaticResource FontAwesomeSolid}"
+                                                 Glyph="{Binding Title, Converter={StaticResource queueNameToGlyphConverter}}" />
+                            </Image.Source>
+
+                        </Image>
+                        <Label VerticalTextAlignment="Start" VerticalOptions="StartAndExpand" 
+                               Grid.Column="1" 
+                               Text="{Binding Title}" 
+                               FontSize="20" 
+                               TextColor="{StaticResource ForegroundColor}" />
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+
+            <DataTemplate  x:Key="AddManualItemButtonTemplate">
+                <ViewCell>
+                    <Button Text="Add Manual Queue" Padding="20, 10, 10, 10" 
+                            BackgroundColor="{StaticResource AccentColor}" 
+                            TextColor="{StaticResource ForegroundColor}"
+                            Clicked="AddManualQueue_Clicked"/>
+
+                    <!--<Grid Padding="20, 10, 10, 10" ColumnSpacing="10" VerticalOptions="Center" BackgroundColor="{StaticResource AccentColor}">
+                        <Label VerticalTextAlignment="Start" VerticalOptions="StartAndExpand" 
+                               Text="{Binding Title}" 
+                               FontSize="20" 
+                               TextColor="{StaticResource ForegroundColor}" />
+                    </Grid>-->
+                </ViewCell>
+            </DataTemplate>
+
+            <DataTemplate  x:Key="SeparatorItemTemplate">
+                <ViewCell>
+                    <Grid BackgroundColor="{StaticResource AccentColor}" HeightRequest="1">
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+            
+            <selectors:MenuItemTemplateSelector x:Key="menuItemTemplateSelector" 
+                                    SearchMenuItemTemplate="{StaticResource SearchMenuItemTemplate}"
+                                    QueueMenuItemTemplate="{StaticResource QueueMenuItemTemplate}"
+                                    ReviewMenuItemTemplate="{StaticResource ReviewMenuItemTemplate}"
+                                    ManualMenuItemTemplate="{StaticResource ManualMenuItemTemplate}"
+                                    SeparatorItemTemplate="{StaticResource SeparatorItemTemplate}" 
+                                    AddManualItemButtonTemplate="{StaticResource AddManualItemButtonTemplate}"
+                                        />
+            
+        </ResourceDictionary>    
+    </ContentPage.Resources>
+    
+    
+    <StackLayout Orientation="Vertical" Spacing="0" >
+
+        <Grid HeightRequest="210" 
+              BackgroundColor="{StaticResource WorkAreaColor}">
+
+            
+            
+            <Label Text="SF Connect" 
+                   TextColor="{StaticResource ForegroundColor}"
+                   VerticalTextAlignment="Center"
+                   HorizontalOptions="Center"
+                   Margin="0,60,0,0"
+                   FontSize="Default"
+                   
+                   />
+
+
+            <Image Source="line.png" Margin="0,0,0,8"/>
+
+            <Frame  
+                   BorderColor="{StaticResource AccentColor}"
+                   BackgroundColor="{StaticResource WorkAreaColor}"
+                   WidthRequest="60"
+                   HeightRequest="60"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Margin="0,0,0,20"
+                   Padding="0"
+                   >
+
+
+
+                    <Image Source="Logo.png"/>
+                    <!--<Image>
+                        <Image.Source>
+                            <FontImageSource 
+                                FontFamily="{StaticResource FontAwesomeSolid}"
+                                Glyph="{x:Static fontawesome:FontAwesomeIcons.Link}"
+                                />
+                        </Image.Source>
+
+                    </Image>-->
+            </Frame>
+            
+            <Label Text="ver. 0.253" 
+                   TextColor="{StaticResource ForegroundColor}"
+                   VerticalTextAlignment="End"
+                   HorizontalTextAlignment="End"
+                   Margin="0,0,5,3"
+                   FontSize="Micro"
+                   
+                   />
+        </Grid>
+        <Grid HeightRequest="2" BackgroundColor="{StaticResource ShadowColor}" />
+
+        <ListView x:Name="ListViewMenu" 
+                    HorizontalScrollBarVisibility="Never" 
+                    VerticalScrollBarVisibility="Never"
+                    VerticalOptions="Start"
+                    HasUnevenRows="True"
+                    ItemsSource="{Binding MenuItems}"
+                    ItemTemplate="{StaticResource menuItemTemplateSelector}"
+                    >
+            
+            <!--<d:ListView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>New and Critical</x:String>
+                    <x:String>Reviewd</x:String>
+                    <x:String>In Backlog</x:String>
+                    <x:String>In Sprint</x:String>
+                </x:Array>
+            </d:ListView.ItemsSource>-->
+            
+            <!--<ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="20,10,10,10">
+                            <Label Text="{Binding Title}" d:Text="{Binding .}" 
+                                   FontSize="20" 
+                                   TextColor="{StaticResource ForegroundColor}"
+                                   
+                                   />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>-->
+        </ListView>
+
+    </StackLayout>
+</ContentPage>

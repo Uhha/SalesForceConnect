@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:fontawesome="clr-namespace:FontAwesome"
+             xmlns:converters="clr-namespace:SFConnectMobile.Converters"
+             mc:Ignorable="d"
+             x:Class="SFConnectMobile.Views.ItemDetailPage"
+             Title="{Binding Title}"
+             >
+
+
+    <ContentPage.Resources>
+        <converters:FileExtensionToGlyphConverter x:Key="fileExtensionToGlyphConverter" />
+    </ContentPage.Resources>
+   
+    
+    
+    <ScrollView>
+        <StackLayout Spacing="10" Padding="15" BackgroundColor="{StaticResource WorkAreaColor}" >
+            <Label Text="{Binding Item.Subject}" d:Text="Item name" FontSize="Medium" TextColor="{StaticResource ForegroundColor}" FontAttributes="Bold"/>
+            <Label Text="{Binding Item.Description}" d:Text="Item description" FontSize="Small" TextColor="{StaticResource ForegroundColor}"/>
+            <Label Text="{Binding Item.CreatedBy.Name}" d:Text="Creator" FontSize="Small" TextColor="{StaticResource ForegroundColor}"/>
+
+          
+            <Grid x:Name="AttachmentListGrid" 
+                  BackgroundColor="#15B3FF00" 
+                  Margin="-15, 0, -15, 0" 
+                  Padding="15, 10, 15, 10" 
+                  IsVisible="{Binding AttachmentVisible}"
+                  RowSpacing="0"
+                >
+                
+                <ListView x:Name="AttachmentList" 
+                        ItemsSource="{Binding Item.Attachments}" 
+                        IsPullToRefreshEnabled="False" 
+                        ItemSelected="Attachment_ItemSelected"
+                        RowHeight="30"
+                        d:HeightRequest="100"
+                        VerticalScrollBarVisibility="Never"
+                        HasUnevenRows="False"
+                        SelectionMode="None"
+                        SeparatorVisibility="Default"
+                        SeparatorColor="{StaticResource ForegroundColor}"
+                        
+                          >
+                    <ListView.Header>
+                        <Label Text="Attachments:" 
+                               TextColor="{StaticResource ForegroundColor}" 
+                               FontSize="Medium" 
+                               Margin="0,0,0,10"/>
+                    </ListView.Header>
+                    <d:ListView.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>First Item</x:String>
+                            <x:String>Second Item</x:String>
+                        </x:Array>
+                    </d:ListView.ItemsSource>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="15"/>
+                                        <ColumnDefinition  Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Grid.Column="0" >
+                                        <Image.Source>
+                                            <FontImageSource
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        Glyph="{Binding AttachmentType, Converter={StaticResource fileExtensionToGlyphConverter}}"
+                                        d:Glyph="{x:Static fontawesome:FontAwesomeIcons.FileExcel}"
+                                        Size="12"
+                                    />
+                                        </Image.Source>
+                                    </Image>
+
+                                    <Label Grid.Column="1" Text="{Binding Name}" d:Text="Attachment.doc" 
+                                    TextColor="{StaticResource ForegroundColor}"
+                                    FontSize="12" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            
+            
+            <Grid x:Name="CommentsListGrid"
+                BackgroundColor="#15ff9900" 
+                Margin="-15, 0, -15, 0" 
+                Padding="15, 10, 15, 10" 
+                IsVisible="{Binding CommentsVisible}"
+                VerticalOptions="FillAndExpand"
+                  HeightRequest="350"
+                         >
+                
+                <ListView x:Name="CommentsList"
+                    ItemsSource="{Binding Item.Comments}" 
+                          IsPullToRefreshEnabled="False" 
+                          HasUnevenRows="True"
+                          VerticalScrollBarVisibility="Never"
+                          SeparatorVisibility="Default"
+                          SeparatorColor="{StaticResource ForegroundColor}"
+                          
+                      >
+                    
+                    <ListView.Header>
+                        <Label Text="Comments:" 
+                               TextColor="{StaticResource ForegroundColor}" 
+                               FontSize="Medium" 
+                               Margin="0,0,0,10"
+                               />
+                    </ListView.Header>
+
+                    <d:ListView.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>First Item</x:String>
+                            <x:String>Second Item</x:String>
+                        </x:Array>
+                    </d:ListView.ItemsSource>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <StackLayout>
+                                        <Label Text="{Binding DtCreated}" d:Text="01/02/2019" 
+                                                TextColor="{StaticResource ForegroundColor}"
+                                                FontSize="Micro"/>
+
+                                        <Label Text="{Binding CommentBody}" d:Text="When we try to edit or submit expenses for this foundation, we receive the following error." 
+                                            VerticalTextAlignment="Start" HorizontalTextAlignment="Start" 
+                                            TextColor="{StaticResource ForegroundColor}"
+                                            FontSize="Small" />
+
+                                        <Label Text="{Binding Creator.Name}" d:Text="Name" 
+                                            VerticalTextAlignment="Start" HorizontalTextAlignment="End" 
+                                            TextColor="{StaticResource ForegroundColor}"
+                                            FontSize="Small" />
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Column="0">
+                    <Label Text="{Binding Priority}" d:Text="Critical" TextColor="{StaticResource ForegroundColor}" FontSize="Micro"/>
+                    <Label Text="{Binding Status}" d:Text="In Developement" TextColor="{StaticResource ForegroundColor}" FontSize="Micro"/>
+                    <Label Text="{Binding SubStatus}" d:Text="In Sprint" TextColor="{StaticResource ForegroundColor}" FontSize="Micro"/>
+                </StackLayout>
+
+                <StackLayout Grid.Column="1">
+                    <Label Text="{Binding CreatedBy}" d:Text="Creator Name" TextColor="{StaticResource ForegroundColor}" FontSize="Micro"/>
+                    <Label Text="{Binding Date}" d:Text="2019/12/31" TextColor="{StaticResource ForegroundColor}" FontSize="Micro"/>
+                    <Label Text="{Binding CaseOwner}" d:Text="Owner Name" TextColor="{StaticResource ForegroundColor}" FontSize="Micro"/>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

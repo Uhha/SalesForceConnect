@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:fontawesome="clr-namespace:FontAwesome"
+             x:Class="SFConnectMobile.Views.ManualTabPickerPage"
+             FlowDirection="LeftToRight"
+             Title="Add Case to Manual Queue"
+             >
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="AddManualQueue_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource
+                        FontFamily="{StaticResource FontAwesomeSolid}"
+                        Glyph="{x:Static fontawesome:FontAwesomeIcons.PlusCircle}"
+                        />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
+    
+    <StackLayout BackgroundColor="{StaticResource WorkAreaColor}">
+        <ListView 
+            VerticalOptions="CenterAndExpand" 
+            HorizontalOptions="CenterAndExpand" 
+            ItemSelected="ListView_ItemSelected"
+            ItemsSource="{Binding Items}"
+            >
+            <d:ListView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>First Item</x:String>
+                    <x:String>Second Item</x:String>
+                    <x:String>Third Item</x:String>
+                    <x:String>Fourth Item</x:String>
+
+                </x:Array>
+            </d:ListView.ItemsSource>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="20, 10, 10, 10" ColumnSpacing="10" VerticalOptions="Center" >
+                           
+                            <Label VerticalTextAlignment="Start" VerticalOptions="StartAndExpand" 
+                               Text="{Binding Title}" 
+                               FontSize="20" 
+                               TextColor="{StaticResource ForegroundColor}" />
+                        </Grid>
+                    </ViewCell>
+                   
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

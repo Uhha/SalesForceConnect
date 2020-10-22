@@ -1,0 +1,104 @@
+﻿<UserControl x:Class="SFConnectorUI.AttachmentButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SFConnectorUI"
+             mc:Ignorable="d" 
+            Height="11" Width="11"
+             MouseDown="UserControl_MouseDown"
+             VerticalAlignment="Bottom"
+             >
+
+    <UserControl.Resources>
+        <Storyboard x:Key="ShowAttachment">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="border">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="border">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="CloseAttachment">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="border">
+                <SplineDoubleKeyFrame KeyTime="0" Value="1"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="border">
+                <SplineDoubleKeyFrame KeyTime="0" Value="1"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+
+
+    <Border x:Name="border" VerticalAlignment="Bottom" CornerRadius="2,2,2,2"  
+            Background="Gainsboro" BorderBrush="Black" BorderThickness="1"
+            Height="11" Width="11" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" >
+        <Border.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform ScaleX="0" ScaleY="0"/>
+                <SkewTransform/>
+                <RotateTransform/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Border.RenderTransform>
+        <Grid>
+            <Label x:Name="other" Content="O"   Foreground="#FFDE9B3A" 
+                   Padding="0" FontWeight="Bold" FontSize="9" Margin="1,-2,-2,-2" Visibility="Hidden">
+            
+            </Label>
+            <Label x:Name="excel" Content="X"   Foreground="#FF00A225" 
+                   Padding="0" FontWeight="Bold" FontSize="9" Margin="2,-2,-3,-2" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1.25"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+
+            </Label>
+
+            <Label x:Name="word" Content="W"   Foreground="#FF060FC1" 
+                   Padding="0" FontWeight="Bold" FontSize="9" Margin="0,-2,-1,-2" Visibility="Hidden">
+            
+            </Label>
+
+            <Label x:Name="message" Content="M"   Foreground="#FF06C5F0" 
+                   Padding="0" FontWeight="Bold" FontSize="9" Margin="0,-2,-1,-2" Visibility="Hidden">
+
+            </Label>
+            <Label x:Name="text" Content="T"   Foreground="#FFF0061B" 
+                   Padding="0" FontWeight="Bold" FontSize="9" Margin="2,-2,-3,-2" Visibility="Hidden">
+
+            </Label>
+
+            <Label x:Name="pdf" Content="p"   Foreground="#FFF0061B" 
+                   Padding="0" FontWeight="Bold" FontSize="9" Margin="2,-4,-3,-2" Visibility="Hidden">
+
+            </Label>
+
+            <!--<Border HorizontalAlignment="Left" Height="11" VerticalAlignment="Top" Width="11" Margin="-1" CornerRadius="2.5,2.5,2.5,2.5" >
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Offset="0.567"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>-->
+        </Grid>
+    </Border>
+
+</UserControl>

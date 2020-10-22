@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:dlocal="clr-namespace:ImplementationModel.SalesForce;assembly=ImplementationModel"
+             xmlns:fontawesome="clr-namespace:FontAwesome"
+             xmlns:customuihelpers="clr-namespace:SFConnectMobile.CustomUIHelpers"
+             mc:Ignorable="d"
+             x:Class="SFConnectMobile.Views.ItemsPage"
+             Title="{Binding Title}"
+             x:Name="BrowseItemsPage"
+            >
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="SortUp" Command="{Binding SortDesc}" >
+            <ToolbarItem.IconImageSource>
+                <FontImageSource
+                        FontFamily="{StaticResource FontAwesomeSolid}"
+                        Glyph="{x:Static fontawesome:FontAwesomeIcons.AngleUp}"
+                        />
+            </ToolbarItem.IconImageSource>
+
+        </ToolbarItem>
+
+        <ToolbarItem x:Name="SortDown" Command="{Binding SortAsc}" >
+            <ToolbarItem.IconImageSource>
+                <FontImageSource
+                        FontFamily="{StaticResource FontAwesomeSolid}"
+                        Glyph="{x:Static fontawesome:FontAwesomeIcons.AngleDown}"
+                        />
+            </ToolbarItem.IconImageSource>
+
+        </ToolbarItem>
+
+    </ContentPage.ToolbarItems>
+
+    <ListView x:Name="ItemsListView" 
+            BackgroundColor="{StaticResource ShadowColor}"
+            ItemsSource="{Binding Items}"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+            RefreshCommand="{Binding LoadItemsCommand}"
+            IsPullToRefreshEnabled="True"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            CachingStrategy="RecycleElement"
+                            >
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <customuihelpers:CaseCell HasRightButton="True" 
+                                          HasLeftButton="False"
+                                          ParentListView="{x:Reference ItemsListView}"
+                                          ParentContentPage="{x:Reference BrowseItemsPage}"
+                                          >
+
+                    <customuihelpers:CaseCell.RightButton>
+                        <Button x:Name="RightButton1" 
+                                BackgroundColor="{StaticResource ShadowColor}"
+                                Command="{Binding OpenManualQueuesPage, Source={x:Reference BrowseItemsPage} }"
+                                CommandParameter="{Binding .}"
+                                > 
+                            <Button.ImageSource>
+                                <FontImageSource FontFamily="{StaticResource FontAwesomeSolid}" 
+                                     Glyph="{x:Static fontawesome:FontAwesomeIcons.AngleDoubleDown}" />
+                            </Button.ImageSource>
+                        </Button>
+                    </customuihelpers:CaseCell.RightButton>
+
+                </customuihelpers:CaseCell>
+              
+            </DataTemplate>
+        </ListView.ItemTemplate>
+
+        <d:ListView.ItemsSource>
+            <x:Array Type="{x:Type dlocal:SFCase}">
+                <dlocal:SFCase CaseNumber="00019711" 
+                                Subject="Quarterly fees with multiple schedules being processed separately" 
+                                Description="" 
+                                Priority="Med" 
+                                SubStatus="InDevBacklog"
+                                >
+                    <dlocal:SFCase.Status>
+                        <dlocal:SFStatus Value="InBacklog" />
+                    </dlocal:SFCase.Status>
+                </dlocal:SFCase>
+                <dlocal:SFCase CaseNumber="00022711" 
+                                Subject="Quarterly fees with multiple schedules being processed separately" 
+                                Description="We recently had an issue where Q1 fees were billed.  The client had 2 fee schedules.  $1800 and $5000.  The account did not have sufficient funds to cover both items, only the 1st one and it was processed separately.   We need to find a way to avoid the quarterly fee to be processed separately.  It can be reflected that way but needs to be processed as if it were one item." 
+                                Priority="Med" 
+                                SubStatus="InDevBacklog"
+                                >
+                    <dlocal:SFCase.Status>
+                        <dlocal:SFStatus Value="InBacklog" />
+                    </dlocal:SFCase.Status>
+
+                </dlocal:SFCase>
+            </x:Array>
+        </d:ListView.ItemsSource>
+        
+    </ListView>
+
+</ContentPage>

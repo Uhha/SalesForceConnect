@@ -1,0 +1,330 @@
+﻿<UserControl x:Class="SFConnectorUI.CaseView.CaseControlDetails"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SFConnectorUI"
+             mc:Ignorable="d" 
+             
+             Canvas.Left="0" 
+             Canvas.Top="0"
+             Canvas.ZIndex ="0"
+             x:Name="caseControlDetails"
+             Width="200"
+             
+             >
+
+    <UserControl.Resources>
+        <Storyboard x:Key="DetailsClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="caseControlDetails">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="20">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="caseControlDetails">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="57.5">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="priority">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="priority">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="1.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="priority">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="180">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.CornerRadius)" Storyboard.TargetName="priority">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.1">
+                    <DiscreteObjectKeyFrame.Value>
+                        <CornerRadius>8</CornerRadius>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.4">
+                    <DiscreteObjectKeyFrame.Value>
+                        <CornerRadius>15</CornerRadius>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="DetailsOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="caseControlDetails">
+                <SplineDoubleKeyFrame KeyTime="0" Value="20"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="20">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame x:Name="mainKey" KeyTime="0:0:0.6" Value="{Binding Source={x:Reference caseControlDetails}, Path=CalculatedHeight}">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="caseControlDetails">
+                <SplineDoubleKeyFrame KeyTime="0" Value="57"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="200">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="200">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="priority">
+                <SplineDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="1.5"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.6" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="priority">
+                <SplineDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="1.5"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.6" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="priority">
+                <SplineDoubleKeyFrame KeyTime="0:0:0.2" Value="180"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.CornerRadius)" Storyboard.TargetName="priority">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.2">
+                    <DiscreteObjectKeyFrame.Value>
+                        <CornerRadius>15</CornerRadius>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5">
+                    <DiscreteObjectKeyFrame.Value>
+                        <CornerRadius>8</CornerRadius>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.6">
+                    <DiscreteObjectKeyFrame.Value>
+                        <CornerRadius>0,8,0,0</CornerRadius>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+
+    <!--<UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource DetailsClose}"/>
+        </EventTrigger>
+    </UserControl.Triggers>-->
+
+    <Grid>
+        <Border x:Name="border" BorderThickness="1,1,1,1" CornerRadius="8,8,8,8" Background="AntiqueWhite" BorderBrush="Black" RenderTransformOrigin="0.5,0.5" >
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Border.RenderTransform>
+            <Grid x:Name="grid" Width ="198" MaxHeight="310" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" >
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+
+
+
+                <StackPanel x:Name="stackPanel" MaxHeight="310" RenderTransformOrigin="0.5,0.5"  >
+                    <StackPanel.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </StackPanel.RenderTransform>
+
+                    <Grid>
+                        <Border x:Name="topShare" Background="#7C000000" Height="19"  Width="198"
+                        CornerRadius="7,7,0,0" BorderBrush="Black" BorderThickness="0" Margin="0,0,0,-1"/>
+                        <Label x:Name="substatus" Content="In Dev Backlog" 
+                       Margin="0,-2,19,0" VerticalAlignment="Top" 
+                       RenderTransformOrigin="0.5,0.5" Width="122" FontSize="11" HorizontalContentAlignment="Right" 
+                        HorizontalAlignment="Right" Height="20" Padding="0,3,3,0" Foreground="White" />
+                    </Grid>
+
+
+                    <TextBlock x:Name="subject" 
+                           Text="This is Title and some long title and other words bla bla title" 
+                           TextWrapping="Wrap"
+                           FontSize="12"
+                           HorizontalAlignment="Left" 
+                           VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" 
+                           Width="191" 
+                           FontWeight="Bold" MaxHeight="52"
+                           Margin="3,0,0,3"
+                           >
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <ScrollViewer x:Name="scrollViewer" CanContentScroll="True" 
+                              HorizontalScrollBarVisibility="Disabled" 
+                              VerticalScrollBarVisibility="Hidden"
+                              MaxHeight="207" RenderTransformOrigin="0.5,0.5"
+                              >
+                        <ScrollViewer.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ScrollViewer.RenderTransform>
+                        <TextBlock x:Name="description" 
+                        Text="Lorem Ipsum is simply dummy text of the printing and typesetting Lorem Ipsum is simply dummy text of the Lorem Ipsum is simply dummy text of the printing and typesetting Lorem Ipsum is simply dummy text of the printing and typesetting Lorem Ipsum is simply dummy text of the printing and typesetting Lorem Ipsum is simply dummy text of the printing and typesetting Lorem Ipsum is simply dummy text of the printing and typesetting  printing and typesetting  industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." 
+                            HorizontalAlignment="Left" 
+                            FontSize="11"
+                            TextWrapping="Wrap"
+                            VerticalAlignment="Top" 
+                            Width="191" 
+                            Margin="3,0,0,3" RenderTransformOrigin="0.5,0"
+                            
+                        
+                              
+                                >
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                    </ScrollViewer>
+                    <Grid x:Name="bottomGrid" Height="30">
+                        <Border x:Name="botShade" Height="30" 
+                       VerticalAlignment="Bottom" Width="198"
+                       CornerRadius="0,0,7,7" BorderBrush="Black" BorderThickness="0" Margin="0,0,0,0">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#7C000000" Offset="1"/>
+                                    <GradientStop Color="#7C000000"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+
+                        <Label x:Name="dtcreated" Content="10/05/2018 12:45PM" 
+                       Margin="0,0,0,16" VerticalAlignment="Bottom" 
+                       Width="97" FontSize="9" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Foreground="White" Padding="5,0" />
+
+
+                        <Label x:Name="creator" Content="Chana Spielman" 
+                       Margin="0,0,4,15" VerticalAlignment="Bottom" 
+                       Width="126" FontSize="11" HorizontalContentAlignment="Right" HorizontalAlignment="Right" Foreground="White" Padding="5,0" />
+
+                        <Label x:Name="owner" Content="ADMIN Support Queue" 
+                       Margin="0,0,4,4" VerticalAlignment="Bottom" 
+                       Width="126" FontSize="10" HorizontalContentAlignment="Right" HorizontalAlignment="Right" Foreground="White" Padding="5,0" />
+
+                        <!--<Border VerticalAlignment="Bottom" CornerRadius="2,2,2,2" Background="Gainsboro" 
+                            MouseDown="Attachment_MouseDown"
+                            
+                            Height="13" Width="13" Margin="11,0,174,-9" 
+                            ToolTipService.InitialShowDelay="5000" 
+                            ToolTipService.ShowDuration="2000" 
+                            ToolTipService.BetweenShowDelay="10000" 
+                            ToolTip="This is a tool tip." 
+                            >           
+                           
+                    </Border>
+                    <Border VerticalAlignment="Bottom" CornerRadius="2,2,2,2" Background="Gainsboro" 
+                            MouseDown="Attachment_MouseDown"
+                            
+                            Height="10" Width="10" Margin="31,0,154,-7" >
+
+                    </Border>-->
+                    </Grid>
+
+
+                </StackPanel>
+
+
+                <Border x:Name="priority" Background="#FFFF0101" HorizontalAlignment="Left" Height="21" 
+                           Margin="178,-1,-1,0"  VerticalAlignment="Top" Width="21"
+                           CornerRadius="0,8,0,0" BorderThickness="1" RenderTransformOrigin="0.5,0.5" >
+                    <Border.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Border.RenderTransform>
+                </Border>
+
+
+
+
+                <!--For Visual Test-->
+                <!--<Border Margin="-1,-1,143,279" Height="20" Width="56" BorderThickness="1,1,0,0" CornerRadius="8,0,0,0" Background="#FFF32F2F" BorderBrush="Black">
+                <Grid Width ="54" Height="18" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                    <Label Content="00023123" HorizontalAlignment="Left" Margin="1,1,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="52" FontSize="10" Height="16" Padding="0,0,0,1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                    </Label>
+
+
+                </Grid>
+            </Border>-->
+            </Grid>
+
+
+        </Border>
+        <Grid x:Name="attachmentsGrid">
+            <!--<Border  
+            VerticalAlignment="Bottom" CornerRadius="2,2,2,2" Background="Gainsboro"  Margin="8,0,182,-6"
+                            Height="10" Width="10"   >
+                <Label Content="O"   Foreground="#FFDE9B3A" 
+               
+                        Padding="0" FontWeight="Bold" FontSize="10" Margin="1,-2,-3,-2"  />
+            </Border>
+            <Border  
+            VerticalAlignment="Bottom" CornerRadius="2,2,2,2" Background="Gainsboro"  Margin="25,0,165,-6"
+                            
+                            Height="10" Width="10" HorizontalAlignment="Center"  >
+                <Label Content="O"   Foreground="#FFDE9B3A" 
+               
+                        Padding="0" FontWeight="Bold" FontSize="10" Margin="1,-2,-3,-2"  />
+            </Border>-->
+        </Grid>
+    </Grid>
+</UserControl>

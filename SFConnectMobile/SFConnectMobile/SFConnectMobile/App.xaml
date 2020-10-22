@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:SFConnectMobile.Converters"
+             mc:Ignorable="d"
+             x:Class="SFConnectMobile.App">
+
+    <Application.Resources>
+        <!--<ResourceDictionary>
+            --><!--Global Styles--><!--
+            <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="BarTextColor" Value="White" />
+            </Style>
+        </ResourceDictionary>-->
+        <ResourceDictionary  Source="PrimeResource.xaml" />
+        
+        <!--<ResourceDictionary>
+            
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary  Source="PrimeResource.xaml" />
+                <ResourceDictionary>
+                    <converters:PriorityColorConverter x:Key="priorityColorConverter" />
+                </ResourceDictionary>
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>-->
+
+    </Application.Resources>
+    
+</Application>

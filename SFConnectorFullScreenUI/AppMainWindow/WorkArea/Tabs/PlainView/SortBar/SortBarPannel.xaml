@@ -1,0 +1,169 @@
+﻿<UserControl x:Class="SFConnectorFullScreenUI.SortBarPannel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SFConnectorFullScreenUI"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             mc:Ignorable="d" 
+             BorderBrush="{StaticResource ShadowBrush}"
+             BorderThickness="0,0,0,0"
+             MinWidth="600"
+             >
+
+    <!-- d:DataContext="{d:DesignInstance Type=local:SortBarPannelVM, IsDesignTimeCreatable=False}" 
+            DataContext="{Binding}"-->
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+    </UserControl.Resources>
+
+    <Grid Background="{StaticResource BackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical" Margin="5,0,5,5">
+            
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Vertical">
+                <Label Content="Queue:" Foreground="{StaticResource ForegroundBrush}" 
+                       FontSize="9" 
+                       Padding="2"
+                       >
+                        
+                </Label>
+                <local:QueueComboBox x:Name="queueComboBox" 
+                          Width="266" 
+                          DataContext="{Binding QueueComboBoxVM}"
+                          >
+                </local:QueueComboBox>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="5,0,0,0">
+                <Label Content="Search Case:" Foreground="{StaticResource ForegroundBrush}" 
+                       FontSize="9" 
+                       Padding="2">
+                    
+                </Label>
+                <TextBox x:Name="searchCaseTextBox" HorizontalAlignment="Left" 
+                     Width="80" 
+                     Height="21"
+                     Style="{StaticResource TextBoxStyleFlat}"
+                     Text="{Binding SearchCaseByNumber, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
+                     local:TextBoxHelper.Eraser="False"
+                     local:TextBoxHelper.CueBanner="Case #"
+                     >
+                        <TextBox.InputBindings>
+                            <KeyBinding Key="Enter" 
+                                        Command="{Binding OpenSingleCase}"
+                                        CommandParameter="{Binding Text, ElementName=searchCaseTextBox}"
+                                        />
+                        </TextBox.InputBindings>
+                    </TextBox>
+            </StackPanel>
+            <Button Grid.Column="2" 
+                Style="{StaticResource ButtonFlat}" 
+                Content="OP" Margin="2,0,0,0"
+                Width="21" Height="21"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                IsEnabled="{Binding CasesCanvasVM.IsAbleToOpenNotFoundCase}"
+                Command="{Binding OpenSingleCase}"
+                CommandParameter="{Binding Text, ElementName=searchCaseTextBox}"
+                >  
+            </Button>
+            <StackPanel Grid.Column="3" Orientation="Vertical" Margin="15,0,0,0">
+                <Label Content="Search Text:" Foreground="{StaticResource ForegroundBrush}" 
+                    FontSize="9" 
+                    Padding="2">
+
+                </Label>
+                <TextBox x:Name="searchTextTextBox" HorizontalAlignment="Left" 
+                    Width="200" 
+                    Height="21"
+                    Text="{Binding TextToSearchOnCases, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{StaticResource TextBoxStyleFlat}"
+                    local:TextBoxHelper.CueBanner="Enter text"
+                    >
+                    <TextBox.InputBindings>
+                        <KeyBinding Key="Enter" 
+                                    Command="{Binding FindCasesText}"
+                                    CommandParameter="{Binding Text, ElementName=searchTextTextBox}"
+                                    />
+                    </TextBox.InputBindings>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="LostFocus">
+                                <i:InvokeCommandAction Command="{Binding SearchTextLostFocus}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+            </StackPanel>
+        </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+
+                <StackPanel Grid.Column="0" Orientation="Vertical" Margin="0,0,10,0">
+                    <Label Content="Sort:" Foreground="{StaticResource ForegroundBrush}" 
+                           FontSize="9" 
+                           Padding="2">
+
+                    </Label>
+                    <StackPanel Orientation="Horizontal">
+                        <local:SortButton SortBy="ID" Content="ID"   Width="20" Height="20" Click="SortButton_Click"/>
+                        <local:SortButton SortBy="Name" Content="Na"   Width="20" Height="20" Click="SortButton_Click"/>
+                        <local:SortButton SortBy="DateOpened" Content="DO"  Width="20" Height="20" Click="SortButton_Click"/>
+                        <local:SortButton SortBy="DateClosed" Content="DC" Width="20" Height="20" Click="SortButton_Click"/>
+                    </StackPanel>
+
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Vertical" Margin="0,0,10,0">
+                    <Label Content="Group By:" Foreground="{StaticResource ForegroundBrush}" 
+                           FontSize="9" 
+                           Padding="2">
+
+                    </Label>
+                    <StackPanel x:Name="groupButtonsStackPannel" Orientation="Horizontal">
+                        <local:GroupButton GroupBy="Name" Width="20" Height="20" Content="Na" Style="{StaticResource ToggleButtonStyleFlat}" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked"/>
+                        <local:GroupButton GroupBy="DateOpened" Width="20" Height="20" Content="DO" Style="{StaticResource ToggleButtonStyleFlat}" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked"/>
+                        <local:GroupButton GroupBy="DateClosed" Width="20" Height="20" Content="DC" Style="{StaticResource ToggleButtonStyleFlat}" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked"/>
+                    </StackPanel>
+
+                </StackPanel>
+                
+                <ToggleButton Grid.Column="2" x:Name="swapAxis" Content="Flip Axis" 
+                              Width="42" Height="20" 
+                              VerticalAlignment="Bottom"
+                              HorizontalAlignment="Left"
+                              Checked="SwapAxis_Checked" Unchecked="SwapAxis_Unchecked"
+                              Style="{StaticResource ToggleButtonStyleFlat}"
+                              Margin="0,0,10,0"
+                              />
+                <Button Grid.Column="3" x:Name="Custom" Content="Change View" 
+                              Width="62" Height="20" 
+                              VerticalAlignment="Bottom"
+                              HorizontalAlignment="Left"
+                              Style="{StaticResource ButtonFlat}"
+                              Margin="0,0,10,0"
+                              Command="{Binding ChangeViewToList}"
+                              />
+            </Grid>
+            
+        </StackPanel>
+        <local:CasesCanvas x:Name="casesCanvas" Grid.Row="1" 
+                           DataContext="{Binding CasesCanvasVM}"
+                           />
+
+    </Grid>
+</UserControl>

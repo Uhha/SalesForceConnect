@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:SFConnectMobile.Views.WebViews"
+             mc:Ignorable="d"
+             x:Class="SFConnectMobile.Views.WebViews.CustomWebPage"
+             Padding="0,20,0,0"
+             >
+    <ContentPage.Content>
+        <Grid>
+            <local:CustomWebView Uri="" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="customWebView" IsVisible="{Binding WebViewVisible}"/>
+            <Image x:Name="picture" Source=""  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding PictureVisible}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

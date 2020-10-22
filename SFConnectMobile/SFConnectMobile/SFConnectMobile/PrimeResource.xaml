@@ -1,0 +1,81 @@
+﻿<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:converters="clr-namespace:SFConnectMobile.Converters;assembly=SFConnectMobile">
+
+
+
+    <!--PRIME COLORS-->
+    <Color x:Key="WindowBackgroundColor">#FF2D2D30</Color>
+    <Color x:Key="BackgroundColor">#FF333337</Color>
+    <Color x:Key="HighlightColor">#FF434346</Color>
+    <Color x:Key="AccentColor">#FF007ACC</Color>
+    <Color x:Key="ForegroundColor">#FFF1F2F7</Color>
+    <Color x:Key="ForegroundFiftyColor">#77F1F2F7</Color>
+    <Color x:Key="ShadowColor">Black</Color>
+    <Color x:Key="ShadowLightColor">#33000000</Color>
+    <Color x:Key="CloseButtonColor">#ffce0d0a</Color>
+    <Color x:Key="WorkAreaColor">#FF292D30</Color>
+
+   
+
+    <!--ADDITIONAL COLORS-->
+    <Color x:Key="OperationCompletedSuccessfulColor">#FF20f204</Color>
+    <Color x:Key="OperationCompletedUnSuccessfulColor">#FFed0707</Color>
+
+    <!--CASE COLORS-->
+    <!--Priorities-->
+    <Color x:Key="Priority.Low">#FF08CB11</Color>
+    <Color x:Key="Priority.Mid">#FFE8FF01</Color>
+    <Color x:Key="Priority.High">#FFFF6901</Color>
+    <Color x:Key="Priority.Critical">#FFFF0101</Color>
+    <Color x:Key="Priority.NotApplicable">#FF808080</Color>
+
+    <!--Statuses-->
+    <Color x:Key="Status.New">#FF55ff00</Color>
+    <Color x:Key="Status.InReview">#FFc4ff00</Color>
+    <Color x:Key="Status.Reviewed">#FFa0d100</Color>
+    <Color x:Key="Status.InBacklog">#FFff8000</Color>
+    <Color x:Key="Status.InProcess">#FFf0e800</Color>
+    <Color x:Key="Status.InDevelopment">#FF00ffff</Color>
+    <Color x:Key="Status.InQA">#FFb540d2</Color>
+    <Color x:Key="Status.AwaitingApproval">#FF6240d2</Color>
+    <Color x:Key="Status.PendingRelease">#FF20e9d5</Color>
+    <Color x:Key="Status.OnHold">#FFb70000</Color>
+    <Color x:Key="Status.Closed">#FF003e58</Color>
+    <Color x:Key="Status.Cancelled">#FF570900</Color>
+    <Color x:Key="Status.ReOpened">#FFed44f9</Color>
+
+    <converters:PriorityColorConverter x:Key="priorityColorConverter"/>
+    <converters:StatusColorConverter x:Key="statusColorConverter" />
+
+    <!--<OnPlatform x:Key="FontAwesomeLightFontFamily" x:TypeArguments="x:String">
+        <On Platform="Android" Value="fa-light-300.ttf#Font Awesome 5 Pro Light" />
+        <On Platform="iOS" Value="FontAwesome5Pro-Light" />
+    </OnPlatform>
+    <OnPlatform x:Key="FontAwesomeRegularFontFamily" x:TypeArguments="x:String">
+        <On Platform="Android" Value="fa-regular-400.ttf#FontAwesome5ProRegular" />
+        <On Platform="iOS" Value="FontAwesome5ProRegular" />
+    </OnPlatform>
+    <OnPlatform x:Key="FontAwesomeSolidFontFamily" x:TypeArguments="x:String">
+        <On Platform="Android" Value="fa-solid-900.ttf#FontAwesome5ProSolid" />
+        <On Platform="iOS" Value="FontAwesome5ProSolid" />
+    </OnPlatform>-->
+
+    <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeRegular">
+        <On Platform="Android" Value="FontAwesome5FreeRegular.otf#Regular" />
+        <On Platform="iOS" Value="FontAwesome5FreeRegular.otf" /> 
+    </OnPlatform>
+
+    <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeBrands">
+        <On Platform="Android" Value="FontAwesome5BrandsRegular.otf#Regular" />
+        <On Platform="iOS" Value="FontAwesome5Brands-Regular" />
+        <On Platform="UWP" Value="/Assets/FontAwesome5BrandsRegular.otf#Font Awesome 5 Brands" />
+    </OnPlatform>
+
+    <OnPlatform x:TypeArguments="x:String" x:Key="FontAwesomeSolid">
+        <On Platform="Android" Value="FontAwesome5FreeSolid.otf#Regular" />
+        <On Platform="iOS" Value="FontAwesome5Free-Solid" />
+        <On Platform="UWP" Value="/Assets/FontAwesome5FreeSolid.otf#Font Awesome 5 Free" />
+    </OnPlatform>
+
+</ResourceDictionary>
