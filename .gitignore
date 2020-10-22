@@ -338,3 +338,16 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/GlobalConfiguration/AppConfig.xml
+/SFLink/StubbedQueues/tnlQ.json
+/SFLink/StubbedQueues/reviewQ.json
+/SFLink/StubbedQueues/qaQ.json
+/SFLink/StubbedQueues/implQ.json
+/SFLink/StubbedQueues/holdQ.json
+/SFLink/StubbedQueues/finopQ.json
+/SFLink/StubbedQueues/fieldsre.txt
+/SFLink/StubbedQueues/devQ.json
+/SFLink/StubbedQueues/csQ.json
+/SFLink/StubbedQueues/critQ.json
+/SFLink/StubbedQueues/closedQ.json
+/SFLink/StubbedQueues/backlogQ.json
