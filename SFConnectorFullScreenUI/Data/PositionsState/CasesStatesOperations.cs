@@ -116,6 +116,7 @@ namespace SFConnectorFullScreenUI
 
         public static CasesList GetCasesList(string caseQueueName, string tabIdentifier)
         {
+            //TODO:Cenvert to async
             if (_casesState.CasesTabs == null) _casesState.CasesTabs = new List<CasesTab>();
             
             var tab = _casesState.CasesTabs.FirstOrDefault(ct => ct.TabIdentifier == tabIdentifier);

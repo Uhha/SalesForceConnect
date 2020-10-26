@@ -123,9 +123,13 @@ namespace SFLink
 
         private void HideSensitive(IList<ICase> ls)
         {
-            string Transform(string t) => t.Replace('a', 'e').Replace('i', 'a').Replace('y', 'o').Replace('s', 'y')
-                .Replace('n', 'k').Replace('k', 'x').Replace('h', 'g').Replace('d', 'r').Replace('x', 'd')
-                .Replace('l', 't').Replace('r', 'l').Replace('v', 'z').Replace('b', 'v').Replace('u', 'i');
+            string Transform(string t) 
+            {
+                if (t == null) return ""; 
+                else return t.Replace('a', 'e').Replace('i', 'a').Replace('y', 'o').Replace('s', 'y')
+                  .Replace('n', 'k').Replace('k', 'x').Replace('h', 'g').Replace('d', 'r').Replace('x', 'd')
+                  .Replace('l', 't').Replace('r', 'l').Replace('v', 'z').Replace('b', 'v').Replace('u', 'i');
+            }
 
             foreach (var cs in ls)
             {
@@ -321,6 +325,7 @@ namespace SFLink
                                 WHERE CaseNumber = '" + caseNumber + "'";
                 var client = await GetForceClient();
                 result = await client.QuerySingle<CaseDataHolder>(qry);
+                if (result == null) return null;
                 return result.Convert();
 
             }

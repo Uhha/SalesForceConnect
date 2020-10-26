@@ -185,39 +185,46 @@ namespace SFConnectorFullScreenUI
             }
             CaseControls.Clear();
             CellLabels.Clear();
-            IList<ICase> casesData;
+            IList<ICase> casesData = default;
             try
             {
                 _isBusyBuildCases = true;
                 casesData = await Task.Run(() => SFConnector.Instance.GetCasesAsync(selection));
             }
-            finally
+            catch (Exception e)
             {
-                _isBusyBuildCases = false;
+                LoggerController.Log(e.Message);
             }
+            
             _previousQueue = selection;
             LoggerController.Log(casesData.Count + $" cases Retrived.");
-            foreach (var item in casesData)
+            CaseControls = await Task.Run(() =>
             {
-                var caseViewModel = new CaseControlVM(item, this);
-                CaseControls.Add(caseViewModel);
-                CaseInfo positionInfo = null;
-                try
+                ObservableCollection<CaseControlVM> cc = new ObservableCollection<CaseControlVM>();
+                foreach (var item in casesData)
                 {
-                    positionInfo = CasesStatesOperations.GetCaseInfo(item.CaseNumber, selection, TabHeader); 
+                    var caseViewModel = new CaseControlVM(item, this);
+                    cc.Add(caseViewModel);
+                    CaseInfo positionInfo = null;
+                    try
+                    {
+                        positionInfo = CasesStatesOperations.GetCaseInfo(item.CaseNumber, selection, TabHeader);
+                    }
+                    catch (Exception e)
+                    {
+                        LoggerController.Log(e.Message);
+                    }
+                    if (positionInfo != null)
+                        caseViewModel.Index = positionInfo.Index;
                 }
-                catch (Exception e)
-                {
-                    LoggerController.Log(e.Message);
-                }
-                if (positionInfo != null)
-                    caseViewModel.Index = positionInfo.Index;
+                return cc;
             }
+            );
 
             try
             {
                 //Add Labels from JSON
-                var caseslist = CasesStatesOperations.GetCasesList(selection, TabHeader);
+                var caseslist = await Task.Run(() => CasesStatesOperations.GetCasesList(selection, TabHeader));
                 foreach (LabelInfo item in caseslist.Labels.Values)
                 {
                     var success = Guid.TryParse(item.Guid, out Guid guid);
@@ -228,6 +235,10 @@ namespace SFConnectorFullScreenUI
             catch (Exception e)
             {
                 LoggerController.Log(e.Message);
+            }
+            finally
+            {
+                _isBusyBuildCases = false;
             }
         }
 
